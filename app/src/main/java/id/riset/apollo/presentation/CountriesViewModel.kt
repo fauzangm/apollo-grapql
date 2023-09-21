@@ -2,6 +2,7 @@ package id.riset.apollo.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import id.riset.apollo.domain.GetCountriesUseCase
 import id.riset.apollo.domain.GetDetailCountryUseCase
 import id.riset.apollo.domain.model.DetailedCountry
@@ -10,8 +11,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-
-class CountriesViewModel(
+import javax.inject.Inject
+@HiltViewModel
+class CountriesViewModel @Inject constructor(
     private val getCountriesUseCase: GetCountriesUseCase,
     private val getDetailCountryUseCase: GetDetailCountryUseCase
 ) : ViewModel() {
