@@ -1,4 +1,4 @@
-package id.riset.apollo.domain
+package id.riset.apollo.domain.model
 
 data class DetailedCountry(
     val code : String,

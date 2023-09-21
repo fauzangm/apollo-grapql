@@ -3,13 +3,13 @@ package id.riset.apollo.data
 import com.apollographql.apollo3.ApolloClient
 import id.riset.apollo.CountriesQuery
 import id.riset.apollo.CountryQuery
-import id.riset.apollo.domain.CountriesClient
-import id.riset.apollo.domain.DetailedCountry
-import id.riset.apollo.domain.SimpelCountry
+import id.riset.apollo.domain.CountryClient
+import id.riset.apollo.domain.model.DetailedCountry
+import id.riset.apollo.domain.model.SimpelCountry
 
 class ApolloCountryClient (
     private val apolloClient : ApolloClient
-    ):CountriesClient  {
+    ):CountryClient  {
     override suspend fun getCountries(): List<SimpelCountry> {
         return  apolloClient
             .query(CountriesQuery())

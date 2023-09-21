@@ -2,10 +2,10 @@ package id.riset.apollo.data
 
 import id.riset.apollo.CountriesQuery
 import id.riset.apollo.CountryQuery
-import id.riset.apollo.domain.DetailedCountry
-import id.riset.apollo.domain.SimpelCountry
+import id.riset.apollo.domain.model.DetailedCountry
+import id.riset.apollo.domain.model.SimpelCountry
 
-fun CountryQuery.Country.toDetailedCountry():DetailedCountry{
+fun CountryQuery.Country.toDetailedCountry(): DetailedCountry {
     return DetailedCountry(
         code = code,
         name = name,
@@ -17,7 +17,7 @@ fun CountryQuery.Country.toDetailedCountry():DetailedCountry{
     )
 }
 
-fun CountriesQuery.Country.toSimpleCountry():SimpelCountry{
+fun CountriesQuery.Country.toSimpleCountry(): SimpelCountry {
     return SimpelCountry(
         code = code,
         name = name,
