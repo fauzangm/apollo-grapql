@@ -1,5 +1,6 @@
-package id.riset.apollo.ui
+package id.riset.apollo.presentation.home
 
+import android.content.Intent
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.graphics.RenderEffect
@@ -33,8 +34,6 @@ import androidx.compose.material.FloatingActionButtonDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -58,7 +57,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -72,8 +70,12 @@ import kotlin.math.sin
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.icons.filled.AcUnit
+import androidx.compose.material.icons.filled.ClosedCaption
+import id.riset.apollo.presentation.language.LanguageActivity
 import id.riset.apollo.utils.times
 import id.riset.apollo.utils.transform
+import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
 
 
 @RequiresApi(Build.VERSION_CODES.S)
@@ -325,7 +327,7 @@ fun FabGroup(
             .padding(bottom = 44.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
-
+        val context = LocalContext.current
         AnimatedFab(
             icon = Icons.Default.PhotoCamera,
             modifier = Modifier.padding(
@@ -348,20 +350,25 @@ fun FabGroup(
         )
 
         AnimatedFab(
-            icon = Icons.Default.Star,
+            moveTo = "Language",
+            icon = Icons.Default.ClosedCaption,
             modifier = Modifier.padding(
                 PaddingValues(
                     bottom = 72.dp,
                     start = 210.dp
                 ) * FastOutSlowInEasing.transform(0.2f, 1.0f, animationProgress)
             ),
-            opacity = LinearEasing.transform(0.4f, 0.9f, animationProgress)
+            opacity = LinearEasing.transform(0.4f, 0.9f, animationProgress),
+            onClick = {
+                val intent = Intent(context, LanguageActivity::class.java)
+                context.startActivity(intent)
+            }
         )
 
-//        AnimatedFab(
-//            modifier = Modifier
-//                .scale(1f - LinearEasing.transform(0.5f, 0.85f, animationProgress)),
-//        )
+        AnimatedFab(
+            modifier = Modifier
+                .scale(1f - LinearEasing.transform(0.5f, 0.85f, animationProgress)),
+        )
 
         AnimatedFab(
             icon = Icons.Default.Add,
@@ -378,6 +385,7 @@ fun FabGroup(
 
 @Composable
 fun AnimatedFab(
+    moveTo: String = "",
     modifier: Modifier,
     icon: ImageVector? = null,
     opacity: Float = 1f,
@@ -400,7 +408,13 @@ fun AnimatedFab(
     }
 }
 
-
+//if (moveTo == "Language") {
+//    // Ketika diklik, buat Intent untuk memulai aktivitas LanguageScreen
+//    val intent = Intent(context, LanguageActivity::class.java)
+//    context.startActivity(intent)
+//}else{
+//    onClick
+//}
 //@Composable
 //@Preview(device = "id:pixel_4a", showBackground = true, backgroundColor = 0xFF3A2F6E)
 //private fun MainScreenPreview() {

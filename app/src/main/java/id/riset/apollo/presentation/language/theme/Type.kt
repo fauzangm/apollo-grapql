@@ -1,4 +1,4 @@
-package id.riset.apollo.ui.theme
+package id.riset.apollo.presentation.language.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

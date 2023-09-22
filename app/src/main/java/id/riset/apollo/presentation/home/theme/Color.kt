@@ -1,4 +1,4 @@
-package id.riset.apollo.ui.theme
+package id.riset.apollo.presentation.home.theme
 
 import androidx.compose.ui.graphics.Color
 
